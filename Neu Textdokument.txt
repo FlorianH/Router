@@ -1,0 +1,82 @@
+<?php
+
+
+class Router {
+
+
+  protected $args;
+
+  protected $routes = array();
+
+  protected static $instance;
+
+  public static function getInstance() {
+    if (self::$instance == null)
+      self::$instance = new Router();
+      
+    return self::$instance;
+  }
+
+  protected function __construct() {
+
+    print_r( $_SERVER );
+
+    $prefix_str = str_replace('index.php', '', $_SERVER['SCRIPT_NAME']);
+    $this->args = '/'.str_replace($prefix_str, '', $_SERVER['REQUEST_URI']);
+
+  }//__construct()
+
+
+  public static function add($route, $endpoint) {
+    
+    Router::getInstance()->routes[] = array('route' => $route, 'endpoint' => $endpoint);
+    
+  }//add()
+  
+  
+  
+  public static function route() {
+    
+    $router = Router::getInstance();
+    
+    
+    //sort routes
+    usort($router->routes, create_function('$a,$b', 'return strlen($a["route"]) < strlen($b["route"]);'));
+    
+
+    foreach($router->routes as $route) {
+      
+      $matching = eregi($route['route'], $router->args, $args);
+
+      if ($matching) {
+
+          $args = array_slice($args, 1);
+          
+          if (strpos($route['endpoint'], '.') === false) {
+            
+            $route['endpoint']($args);
+            
+          } else {
+          
+            list($class, $function) =  explode('.', $route['endpoint']);
+            
+            $instance = new $class();
+            $instance->$function($args);
+          
+          }
+
+        break;
+        
+      }//if ($matching)
+      
+      
+    }//foreach
+    
+  
+  }//route()
+
+
+
+
+
+}//class Router
