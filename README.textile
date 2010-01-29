@@ -2,6 +2,8 @@ h1. A simple url router
 
 This file contains a small url router, which is intended to be used in very small projects, where no real MVC framework fits the needs of the project.
 
+h2. Comments
+
 To create a route, you just have to call the "Router::add" function and provide the intended url and the name of the function which is supposed to be called if the route matches.
 
 The function name can contain a regular expression. Every matching argument, that can be extracted will be stored in the $args array.
@@ -21,7 +23,7 @@ the endpoint has to be "Foo.bar". See example usage in the example file (index.p
 The Router has only static methods, because that makes the api super nice (at least IMHO).
 
 
-Usage:
+h1. Usage:
 
 bc. require_once('Router.php');
 Router::add('/example', 'example_function');
