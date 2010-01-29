@@ -1,0 +1,31 @@
+h1. A simple url router
+
+This file contains a small url router, which is intended to be used in very small projects, where no real MVC framework fits the needs of the project.
+
+To create a route, you just have to call the "Router::add" function and provide the intended url and the name of the function which is supposed to be called if the route matches.
+
+The function name can contain a regular expression. Every matching argument, that can be extracted will be stored in the $args array.
+
+Every function, that is supposed to be the endpoint of an url has to accept a single variable, which will contain the array of extracted arguments.
+
+If you want to use class methods as your endpoints, just add the class's name in front of the method's name and add a dot after the class's name.
+
+For the bar method of this class:
+
+bc. class Foo {
+  function bar($args) {...}
+}
+
+the endpoint has to be "Foo.bar". See example usage in the example file (index.php).
+
+The Router has only static methods, because that makes the api super nice (at least IMHO).
+
+
+Usage:
+
+bc. require_once('Router.php');
+Router::add('/example', 'example_function');
+function example_function($args) {
+  echo "Hello!<br />";
+  print_r($args);
+}
