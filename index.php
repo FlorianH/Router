@@ -3,12 +3,15 @@
 require_once('Router.php');
 
 
+//Adding the routes
 Router::add('/', 'index');
 Router::add('/one', 'test_one');
 Router::add('/two', 'test_two');
 Router::add('/two/([a-z]+)', 'test_two');
 Router::add('/three/([a-z]+)', 'TestController.three');
 
+
+//Running the routing
 Router::run();
 
 
