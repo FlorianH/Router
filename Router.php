@@ -3,7 +3,7 @@
 /**
 * A simple url router
 * 
-* This file contains a small url router, which is intendet to
+* This file contains a small url router, which is intended to
 * be used in very small projects, where no real MVC framework
 * fits the needs of the project.
 * 
