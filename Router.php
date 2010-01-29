@@ -31,6 +31,9 @@
 * the endpoint has to be "Foo.bar". See example usage in the
 * example file (index.php).
 * 
+* The Router has only static methods, because that makes the api
+* super nice (at least IMHO).
+* 
 * 
 * Usage:
 * 
