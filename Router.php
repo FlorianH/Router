@@ -90,7 +90,7 @@ class Router {
   * be called if the route matches.
   */
   public static function add($route, $endpoint) {
-    self::$routes[] = array('route' => $route, 'endpoint' => $endpoint);
+    self::$routes[] = array('route' => '@' . $route . '@i', 'endpoint' => $endpoint);
   }//add()
   
   
@@ -115,7 +115,7 @@ class Router {
 
     foreach(self::$routes as $route) {
       
-      $route_matches_args = eregi($route['route'], $args, $regs);
+      $route_matches_args = preg_match($route['route'], $args, $regs);
 
       if ($route_matches_args)
       {
