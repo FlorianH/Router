@@ -1,3 +1,5 @@
+bc.. Warning: This code is very old and has not been maintained for a long time. You probably do not want to use this anymore.
+
 h1. A simple url router
 
 This file contains a small url router, which is intended to be used in very small projects, where no real MVC framework fits the needs of the project.
