@@ -1,5 +1,5 @@
 bc.. Warning: This code is very old and has not been maintained for a long time.
-You probably do not want to use this anymore.
+You probably do not want to use this anymore and have a look at https://github.com/auraphp/Aura.Router instead.
 
 h1. A simple url router
 
